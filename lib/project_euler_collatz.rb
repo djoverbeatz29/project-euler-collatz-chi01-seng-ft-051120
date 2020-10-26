@@ -16,8 +16,19 @@ def collatz(n)
         seq.push(n)
         n = next_value(n)
     end
-    sequence.push(n)
+    seq.push(n)
+    seq
 end
 
 def longest_collatz
+    max_len = 0
+    max_start = 0
+    (500000..1000000).each do |start|
+        curr_len = collatz(start).length
+        if (curr_len > max_len)
+            max_start = start
+            max_len = curr_len
+        end
+    end
+    max_start
 end
